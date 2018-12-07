@@ -1,4 +1,13 @@
 \usepackage{fontspec}
+\makeatletter
+\pgfdeclareverticalshading[black,bg]{bmb@shadow}{200cm}{%
+  color(0bp)=(PantonePearlGrey); color(4bp)=(black!50!bg); color(8bp)=(black!50!bg)}
+\pgfdeclareradialshading[black,bg]{bmb@shadowball}{\pgfpointorigin}{%
+  color(0bp)=(black!50!bg); color(4bp)=(PantonePearlGrey)}
+\pgfdeclareradialshading[black,bg]{bmb@shadowballlarge}{\pgfpointorigin}{%
+  color(0bp)=(black!50!bg); color(4bp)=(black!50!bg); color(8bp)=(PantonePearlGrey)}
+  %
+   \makeatother
 
 \newfontfamily{\BureoThreeSeven}{KingsBureauGrot-ThreeSeven}[
 Extension       =   .ttf,

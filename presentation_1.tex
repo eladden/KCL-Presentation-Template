@@ -112,25 +112,54 @@
   \end{beamercolorbox}}%
   \vskip0pt%
 }
+\newsavebox{\mybox}% <- NEW
+\newlength{\frametitelheight}% <- NEW
+\setbeamertemplate{frametitle}{%
+  \ifbeamercolorempty[bg]{frametitle}{}{\nointerlineskip}%
+  \@tempdima=\textwidth%
+  \advance\@tempdima by\beamer@leftmargin%
+  \advance\@tempdima by\beamer@rightmargin%
+  
+  \sbox{\mybox}{% <- NEW
+      \begin{beamercolorbox}[sep=0.3cm,left,wd=\the\@tempdima]{frametitle}
+        \usebeamerfont{frametitle}%
+        \vbox{}\vskip-1ex%
+        \if@tempswa\else\csname beamer@fteleft\endcsname\fi%
+        \strut\insertframetitle\strut\par%
+        {%
+          \ifx\insertframesubtitle\@empty%
+          \else%
+          {\usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\insertframesubtitle\strut\par}%
+          \fi
+        }%
+        \vskip-1ex%
+        \if@tempswa\else\vskip-.3cm\fi% set inside beamercolorbox... evil here...
+      \end{beamercolorbox}%
+     }% <- NEW
+     \usebox{\mybox}% <- NEW
+     \settoheight{\frametitelheight}{\usebox{\mybox}}% <- NEW
+}
 \makeatother
 \input{fonts.tex}
 
 \usepackage{graphicx} % Allows including images
 \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
 \usepackage{tikz}
+\usepackage{hyperref}
 
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
 
 \title[Template]{Template of Presentation} % The short title appears at the bottom of every slide, the full title is only on the title page
-\subtitle{With KCL logo, fonts and colors!\\%\vspace{0.2cm}\frame{\includegraphics[height=2cm]{kcl_red_logo}}}
-\vspace{0.2cm}\includegraphics[height=2cm]{kcl_red_logo}}
+\subtitle{With KCL logo, fonts and colors!}%\\\vspace{0.2cm}\frame{\includegraphics[height=2cm]{kcl_red_logo}}}
+\titlegraphic{\includegraphics[height=2cm]{kcl_red_logo.jpg}}
 
-\author[Elad Denenberg]{Elad Denenberg}
+
+\author[Elad Denenberg]{\LARGE Elad Denenberg}
 \institute[KCL] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
 {
-Planning Group\\\tiny{Department of Informatics\\ 
+Planning Group\\{Department of Informatics\\ 
 Natural Sciences and Mathematics} \\ % Your institution for the title page
 \medskip
 \textit{elad.denenberg@kcl.ac.uk} % Your email address
@@ -148,7 +177,7 @@ Natural Sciences and Mathematics} \\ % Your institution for the title page
 
 \addtobeamertemplate{frametitle}{}{%
 \begin{tikzpicture}[remember picture,overlay]
-\node[anchor=north east,yshift=2pt] at (current page.north east) {\includegraphics[height=0.6cm]{kcl_red_logo.jpg}};
+\node[anchor=north east,yshift=5,xshift=5] at (current page.north east) {\includegraphics[height=\frametitelheight]{kcl_red_logo.jpg}};
 \end{tikzpicture}}
 
 \begin{frame}
@@ -177,6 +206,7 @@ Sed diam enim, sagittis nec condimentum sit amet, ullamcorper sit amet libero. A
 
 \begin{frame}
 \frametitle{Bullet Points}
+\framesubtitle{The logo changes size with the subtitle}
 \begin{itemize}
 \item Lorem ipsum dolor sit amet, consectetur adipiscing elit
 \item Aliquam blandit faucibus nisi, sit amet dapibus enim tempus eu
@@ -195,16 +225,17 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lectus nisl, ul
 \end{block}
 
 {
-\setbeamercolor{block title}{bg=PantonePeaGreen,fg=white}
-\setbeamercolor{block body}{bg=PantoneMushroom,fg=black}
+\setbeamercolor{block title}{bg=PantoneOrange,fg=black}
+\setbeamercolor{block body}{bg=PantoneSlateGrey,fg=white}
 \begin{block}{Block 2}
-You can change the colors acc. to the KCL branding color scheme
+You can change the colors. Make sure you do it  acc. to the KCL branding color scheme:
+\href{https://internal.kcl.ac.uk/erd/depts/brand-and-marketing-portal/Documents/brand-resources/docs/Colour-palette.pdf}{\color{PantoneLimeGreen}\underline{Link to Scheme}}
 \end{block}
 }
 
-\begin{block}{Block 3 - with equation}
+\begin{alertblock}{Block 3 - alert}
 Suspendisse tincidunt sagittis gravida. Curabitur condimentum, enim sed venenatis rutrum, ipsum neque consectetur orci, sed blandit justo nisi ac lacus.
-\end{block}
+\end{alertblock}
 \end{frame}
 
 %------------------------------------------------
