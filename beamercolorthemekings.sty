@@ -18,19 +18,23 @@
 \definecolor{PantonePurple}{RGB}{80, 20, 145  }
 \definecolor{PantoneSeaBlue}{RGB}{0, 90, 210 }
 \definecolor{PantoneTealBlue}{RGB}{0, 158, 160 }
-
-\definecolor{PantoneMidnightBlue}{rgb}{0.04,0.18,0.31}
-\definecolor{PantoneReflexBlue}{rgb}{0,0.14,0.58}
-\definecolor{PantonePebbel}{rgb}{0.37,0.33,0.31}
-\definecolor{PantonePearlGrey}{rgb}{0.8, 0.84, 0.86}
-\definecolor{PantoneMushroom}{rgb}{0.8,0.76, 0.72}
-\definecolor{PantoneSlateGrey}{rgb}{0.35, 0.39, 0.41 }
-
-
-
 \definecolor{PantoneYellow}{RGB}{245, 185, 15 }
 \definecolor{PantoneSoftPink}{RGB}{252, 94, 114 }
+\definecolor{PantoneMidnightBlue}{RGB}{10, 45, 80 }
+\definecolor{PantoneReflexBlue}{RGB}{10, 45, 80} 
 \definecolor{PantoneOrange}{RGB}{255, 95, 5 }
+\definecolor{PantoneHotPink}{RGB}{200, 50, 150}
+\definecolor{PantonePebbel}{RGB}{95, 85, 80 }
+\definecolor{PantoneSlateGrey}{RGB}{90, 100, 105}
+\definecolor{PantoneMushroom}{RGB}{205, 195, 185 }
+\definecolor{PantonePearlGrey}{RGB}{205, 215, 220 }
+
+
+
+
+
+
+
 \setbeamercolor{section in toc}{fg=black,bg=white}
 \setbeamercolor{alerted text}{fg=darkred!80!gray}
 \setbeamercolor*{palette primary}{fg=white,bg=PantoneRed}
@@ -67,5 +71,106 @@
 \setbeamercolor*{separation line}{}
 \setbeamercolor*{fine separation line}{}
 
+\defbeamertemplate*{footline}{Dan P theme} %This is to chnage the size of the footer sections
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.4\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor\expandafter\beamer@ifempty\expandafter{\beamer@shortinstitute}{}{~~(\insertshortinstitute)}
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.4\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.2\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+\insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+\newsavebox{\mybox}% <- NEW
+\newlength{\frametitelheight}% <- NEW
+\setbeamertemplate{frametitle}{%
+  \ifbeamercolorempty[bg]{frametitle}{}{\nointerlineskip}%
+  \@tempdima=\textwidth%
+  \advance\@tempdima by\beamer@leftmargin%
+  \advance\@tempdima by\beamer@rightmargin%
+  
+  \sbox{\mybox}{% <- NEW
+      \begin{beamercolorbox}[sep=0.3cm,left,wd=\the\@tempdima]{frametitle}
+        \usebeamerfont{frametitle}%
+        \vbox{}\vskip-1ex%
+        \if@tempswa\else\csname beamer@fteleft\endcsname\fi%
+        \strut\insertframetitle\strut\par%
+        {%
+          \ifx\insertframesubtitle\@empty%
+          \else%
+          {\usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\insertframesubtitle\strut\par}%
+          \fi
+        }%
+        \vskip-1ex%
+        \if@tempswa\else\vskip-.3cm\fi% set inside beamercolorbox... evil here...
+      \end{beamercolorbox}%
+     }% <- NEW
+     \usebox{\mybox}% <- NEW
+     \settoheight{\frametitelheight}{\usebox{\mybox}}% <- NEW
+}
+
 \mode
 <all>
+
+\RequirePackage{fontspec}
+\makeatletter
+\pgfdeclareverticalshading[black,bg]{bmb@shadow}{200cm}{%
+  color(0bp)=(PantonePearlGrey); color(4bp)=(black!50!bg); color(8bp)=(black!50!bg)}
+\pgfdeclareradialshading[black,bg]{bmb@shadowball}{\pgfpointorigin}{%
+  color(0bp)=(black!50!bg); color(4bp)=(PantonePearlGrey)}
+\pgfdeclareradialshading[black,bg]{bmb@shadowballlarge}{\pgfpointorigin}{%
+  color(0bp)=(black!50!bg); color(4bp)=(black!50!bg); color(8bp)=(PantonePearlGrey)}
+  %
+   \makeatother
+
+\newfontfamily{\BureoThreeSeven}{KingsBureauGrot-ThreeSeven}[
+Extension       =   .ttf,
+UprightFont     =   *-Regular,
+ItalicFont      =   *-Italic,
+]  
+
+\newfontfamily{\BureoFiveOne}{KingsBureauGrot-FiveOne}[
+Extension       =   .ttf,
+UprightFont     =   *-Regular,
+ItalicFont      =   *-Italic,
+]
+
+\newfontfamily{\CaslonDisp}{KingsCaslonDisplay}[
+Extension       =   .ttf,
+UprightFont     =   *-Regular,
+ItalicFont      =   *-Italic,
+]
+
+\newfontfamily{\Caslon}{KingsCaslon}[
+Extension       =   .ttf,
+UprightFont     =   *-Regular,
+BoldFont        =   *-Bold,
+ItalicFont      =   *-Italic,
+BoldItalicFont  =   *-BoldItalic
+]
+
+
+\setbeamerfont{title page}{family=\BureoThreeSeven}
+\setbeamerfont{footline}{family=\BureoThreeSeven}
+\setbeamerfont{frametitle}{family=\BureoThreeSeven}
+\setbeamerfont{framesubtitle}{family=\BureoThreeSeven}
+\setbeamerfont{block title}{family=\BureoThreeSeven}
+
+
+%\setbeamerfont{part page}{family=\Caslon}
+%\setbeamerfont{section page}{family=\Caslon}
+%\setbeamerfont{subsection page}{family=\Caslon}
+%\setbeamerfont{block body}{family=\Caslon}
+
+\setsansfont{KingsCaslon-Regular.ttf}%
+  [Ligatures=TeX,
+  BoldFont=KingsCaslon-Bold.ttf,
+  ItalicFont=KingsCaslon-Italic.ttf,
+  BoldItalicFont=KingsCaslon-BoldItalic.ttf]
