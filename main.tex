@@ -40,10 +40,7 @@
 %\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
 }
 
-\input{fonts.tex}
 
-\usepackage{graphicx} % Allows including images
-\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
 \usepackage{tikz}
 \usepackage{hyperref}
 
@@ -53,7 +50,9 @@
 
 \title[Template]{Template of Presentation} % The short title appears at the bottom of every slide, the full title is only on the title page
 \subtitle{With KCL logo, fonts and colors!}%\\\vspace{0.2cm}\frame{\includegraphics[height=2cm]{kcl_red_logo}}}
-\titlegraphic{\includegraphics[height=2cm]{kcl_red_logo.jpg}}
+\titlegraphic{\begin{tikzpicture}[remember picture,overlay]
+\node[anchor=south east,yshift=-4,xshift=4] at (current page.south east) {\includegraphics[height=2.5cm]{kcl_red_logo.jpg}};
+\end{tikzpicture}}
 
 
 \author[Elad Denenberg]{\LARGE Elad Denenberg}
@@ -67,6 +66,7 @@ Natural Sciences and Mathematics} \\ % Your institution for the title page
 \date{} % Date, can be changed to a custom date
 
 \begin{document}
+\pgfdeclareimage[width=\paperwidth]{mybackground}{Untitled.png}
 {
 \setbeamertemplate{footline}{} 
 \begin{frame}
@@ -76,6 +76,7 @@ Natural Sciences and Mathematics} \\ % Your institution for the title page
 \addtocounter{framenumber}{-1}
 
 \addtobeamertemplate{frametitle}{}{%
+
 \begin{tikzpicture}[remember picture,overlay]
 \node[anchor=north east,yshift=5,xshift=5] at (current page.north east) {\includegraphics[height=\frametitelheight]{kcl_red_logo.jpg}};
 \end{tikzpicture}}
