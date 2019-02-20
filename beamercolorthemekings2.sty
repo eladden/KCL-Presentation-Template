@@ -21,7 +21,7 @@
 \definecolor{PantoneYellow}{RGB}{245, 185, 15 }
 \definecolor{PantoneSoftPink}{RGB}{252, 94, 114 }
 \definecolor{PantoneMidnightBlue}{RGB}{10, 45, 80 }
-\definecolor{PantoneReflexBlue}{RGB}{10, 45, 80} 
+\definecolor{PantoneReflexBlue}{RGB}{10, 35, 149} 
 \definecolor{PantoneOrange}{RGB}{255, 95, 5 }
 \definecolor{PantoneHotPink}{RGB}{200, 50, 150}
 \definecolor{PantonePebbel}{RGB}{95, 85, 80 }
@@ -38,8 +38,8 @@
 \setbeamercolor{section in toc}{fg=black,bg=white}
 \setbeamercolor{alerted text}{fg=darkred!80!gray}
 \setbeamercolor*{palette primary}{fg=white,bg=PantoneRed}
-\setbeamercolor*{palette secondary}{fg=PantonePearlGrey,bg=PantoneSlateGrey}
-\setbeamercolor*{palette tertiary}{fg=PantonePurple,bg=PantoneMushroom}
+\setbeamercolor*{palette secondary}{fg=PantonePurple,bg=PantoneMushroom}
+\setbeamercolor*{palette tertiary}{fg=PantonePearlGrey,bg=PantoneSlateGrey}
 \setbeamercolor*{palette quaternary}{fg=PantonePearlGrey,bg=PantonePebbel}
 
 \setbeamercolor*{sidebar}{fg=PantonePearlGrey,bg=PantoneSlateGrey}
@@ -53,19 +53,19 @@
 \setbeamercolor{title}{parent=palette primary}
 \setbeamercolor{titlelike}{parent=palette primary,fg=PantoneMidnightBlue}
 \setbeamercolor{title page}{parent=pallete primary,fg=PantoneReflexBlue}
-\setbeamercolor{frametitle}{bg=PantoneTealBlue,fg=white}
+\setbeamercolor{frametitle}{bg=PantonePearlGrey,fg=PantoneReflexBlue}
 \setbeamercolor{frametitle right}{bg=PantonePearlGrey}
 \setbeamercolor{date in head/foot}{parent=palette secondary}
-\setbeamercolor{background canvas}{bg=PantonePearlGrey}
+%\setbeamercolor{background canvas}{bg=PantonePearlGrey}
 \setbeamercolor{item projected}{bg=PantoneRed}
 \setbeamercolor{local structure}{fg=PantoneRed}
-\setbeamercolor{block title}{bg=PantoneMidnightBlue,fg=white}
-\setbeamercolor{block body}{bg=PantoneMushroom,fg=black}
+\setbeamercolor{block title}{bg=PantoneTealBlue,fg=white}
+\setbeamercolor{block body}{bg=PantonePearlGrey,fg=black}
 \setbeamercolor{block title alerted}{bg=PantonePeaGreen,fg=black}
 \setbeamercolor{block body alerted}{bg=PantoneMushroom,fg=black}
 \setbeamercolor{block title example}{bg=PantoneLimeGreen,fg=black}
 \setbeamercolor{block body example}{bg=PantoneSlateGrey,fg=white}
-\setbeamercolor{navigation symbols}{fg=PantoneRed,bg=PantoneOrange}
+\setbeamercolor{navigation symbols}{fg=PantoneMidnightBlue,bg=PantoneReflexBlue}
 
 
 \setbeamercolor*{separation line}{}
@@ -120,15 +120,15 @@
 <all>
 
 \RequirePackage{fontspec}
-\makeatletter
-\pgfdeclareverticalshading[black,bg]{bmb@shadow}{200cm}{%
-  color(0bp)=(PantonePearlGrey); color(4bp)=(black!50!bg); color(8bp)=(black!50!bg)}
-\pgfdeclareradialshading[black,bg]{bmb@shadowball}{\pgfpointorigin}{%
-  color(0bp)=(black!50!bg); color(4bp)=(PantonePearlGrey)}
-\pgfdeclareradialshading[black,bg]{bmb@shadowballlarge}{\pgfpointorigin}{%
-  color(0bp)=(black!50!bg); color(4bp)=(black!50!bg); color(8bp)=(PantonePearlGrey)}
+%\makeatletter
+%\pgfdeclareverticalshading[black,bg]{bmb@shadow}{200cm}{%
+%  color(0bp)=(PantonePearlGrey); color(4bp)=(black!50!bg); color(8bp)=(black!50!bg)}
+%\pgfdeclareradialshading[black,bg]{bmb@shadowball}{\pgfpointorigin}{%
+%  color(0bp)=(black!50!bg); color(4bp)=(PantonePearlGrey)}
+%\pgfdeclareradialshading[black,bg]{bmb@shadowballlarge}{\pgfpointorigin}{%
+%  color(0bp)=(black!50!bg); color(4bp)=(black!50!bg); color(8bp)=(PantonePearlGrey)}
   %
-   \makeatother
+%   \makeatother
 
 \newfontfamily{\BureoThreeSeven}{KingsBureauGrot-ThreeSeven}[
 Extension       =   .ttf,
@@ -165,7 +165,7 @@ BoldItalicFont  =   *-BoldItalic
 
 \setsansfont{KingsCaslon-Regular.ttf}%
   [Ligatures=TeX,
-  BoldFont=KingsCaslon-Bold.ttf,
+  BoldFont=KingsBureauGrot-ThreeSeven-Regular.ttf,
   ItalicFont=KingsCaslon-Italic.ttf,
   BoldItalicFont=KingsCaslon-BoldItalic.ttf]
 

@@ -1,0 +1,171 @@
+% Copyright 2004 by Madhusudan Singh <madhusudan.singh@gmail.com>
+%
+% This file may be distributed and/or modified
+%
+% 1. under the LaTeX Project Public License and/or
+% 2. under the GNU Public License.
+%
+% See the file doc/licenses/LICENSE for more details.
+\mode<presentation>
+
+\definecolor{darkred}{rgb}{0.88,0.14,0.1}
+\definecolor{PantoneRed}{RGB}{226, 35, 26 }
+\definecolor{PantoneLilac}{RGB}{155, 130, 210 }
+\definecolor{PantoneSkyBlue}{RGB}{0, 185, 225}
+\definecolor{PantonePeaGreen}{RGB}{40, 195, 130 }
+\definecolor{PantoneLimeGreen}{RGB}{200, 225, 40  }
+\definecolor{PantonePurple}{RGB}{80, 20, 145  }
+\definecolor{PantoneSeaBlue}{RGB}{0, 90, 210 }
+\definecolor{PantoneTealBlue}{RGB}{0, 158, 160 }
+\definecolor{PantoneYellow}{RGB}{245, 185, 15 }
+\definecolor{PantoneSoftPink}{RGB}{252, 94, 114 }
+\definecolor{PantoneMidnightBlue}{RGB}{10, 45, 80 }
+\definecolor{PantoneReflexBlue}{RGB}{10, 35, 149} 
+\definecolor{PantoneOrange}{RGB}{255, 95, 5 }
+\definecolor{PantoneHotPink}{RGB}{200, 50, 150}
+\definecolor{PantonePebbel}{RGB}{95, 85, 80 }
+\definecolor{PantoneSlateGrey}{RGB}{90, 100, 105}
+\definecolor{PantoneMushroom}{RGB}{205, 195, 185 }
+\definecolor{PantonePearlGrey}{RGB}{205, 215, 220 }
+
+
+
+
+
+
+
+\setbeamercolor{section in toc}{fg=black,bg=white}
+\setbeamercolor{alerted text}{fg=darkred!80!gray}
+\setbeamercolor*{palette primary}{fg=white,bg=PantoneRed}
+\setbeamercolor*{palette secondary}{fg=PantonePearlGrey,bg=PantoneSlateGrey}
+\setbeamercolor*{palette tertiary}{fg=PantonePurple,bg=PantoneMushroom}
+\setbeamercolor*{palette quaternary}{fg=PantonePearlGrey,bg=PantonePebbel}
+
+\setbeamercolor*{sidebar}{fg=PantonePearlGrey,bg=PantoneSlateGrey}
+
+\setbeamercolor*{palette sidebar primary}{fg=PantoneMidnightBlue,bg=PantoneLimeGreen}
+\setbeamercolor*{palette sidebar secondary}{fg=PantoneReflexBlue,bg=PantonePearlGrey}
+\setbeamercolor*{palette sidebar tertiary}{fg=PantoneLilac}
+\setbeamercolor*{palette sidebar quaternary}{fg=PantoneLimeGreen}
+
+%\setbeamercolor*{titlelike}{parent=palette primary}
+\setbeamercolor{title}{parent=palette primary}
+\setbeamercolor{titlelike}{parent=palette primary,fg=PantoneMidnightBlue}
+\setbeamercolor{title page}{parent=pallete primary,fg=PantoneReflexBlue}
+\setbeamercolor{frametitle}{bg=PantoneTealBlue,fg=white}
+\setbeamercolor{frametitle right}{bg=PantonePearlGrey}
+\setbeamercolor{date in head/foot}{parent=palette secondary}
+\setbeamercolor{background canvas}{bg=PantonePearlGrey}
+\setbeamercolor{item projected}{bg=PantoneRed}
+\setbeamercolor{local structure}{fg=PantoneRed}
+\setbeamercolor{block title}{bg=PantoneMidnightBlue,fg=white}
+\setbeamercolor{block body}{bg=PantoneMushroom,fg=black}
+\setbeamercolor{block title alerted}{bg=PantonePeaGreen,fg=black}
+\setbeamercolor{block body alerted}{bg=PantoneMushroom,fg=black}
+\setbeamercolor{block title example}{bg=PantoneLimeGreen,fg=black}
+\setbeamercolor{block body example}{bg=PantoneSlateGrey,fg=white}
+\setbeamercolor{navigation symbols}{fg=PantoneMidnightBlue,bg=PantoneReflexBlue}
+
+
+\setbeamercolor*{separation line}{}
+\setbeamercolor*{fine separation line}{}
+
+\defbeamertemplate*{footline}{Dan P theme} %This is to chnage the size of the footer sections
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.4\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor\expandafter\beamer@ifempty\expandafter{\beamer@shortinstitute}{}{~~(\insertshortinstitute)}
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.4\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.2\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+\insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+\newsavebox{\mybox}% <- NEW
+\newlength{\frametitelheight}% <- NEW
+\setbeamertemplate{frametitle}{%
+  \ifbeamercolorempty[bg]{frametitle}{}{\nointerlineskip}%
+  \@tempdima=\textwidth%
+  \advance\@tempdima by\beamer@leftmargin%
+  \advance\@tempdima by\beamer@rightmargin%
+  
+  \sbox{\mybox}{% <- NEW
+      \begin{beamercolorbox}[sep=0.3cm,left,wd=\the\@tempdima]{frametitle}
+        \usebeamerfont{frametitle}%
+        \vbox{}\vskip-1ex%
+        \if@tempswa\else\csname beamer@fteleft\endcsname\fi%
+        \strut\insertframetitle\strut\par%
+        {%
+          \ifx\insertframesubtitle\@empty%
+          \else%
+          {\usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\insertframesubtitle\strut\par}%
+          \fi
+        }%
+        \vskip-1ex%
+        \if@tempswa\else\vskip-.3cm\fi% set inside beamercolorbox... evil here...
+      \end{beamercolorbox}%
+     }% <- NEW
+     \usebox{\mybox}% <- NEW
+     \settoheight{\frametitelheight}{\usebox{\mybox}}% <- NEW
+}
+
+\mode
+<all>
+
+\RequirePackage{fontspec}
+\makeatletter
+\pgfdeclareverticalshading[black,bg]{bmb@shadow}{200cm}{%
+  color(0bp)=(PantonePearlGrey); color(4bp)=(black!50!bg); color(8bp)=(black!50!bg)}
+\pgfdeclareradialshading[black,bg]{bmb@shadowball}{\pgfpointorigin}{%
+  color(0bp)=(black!50!bg); color(4bp)=(PantonePearlGrey)}
+\pgfdeclareradialshading[black,bg]{bmb@shadowballlarge}{\pgfpointorigin}{%
+  color(0bp)=(black!50!bg); color(4bp)=(black!50!bg); color(8bp)=(PantonePearlGrey)}
+  %
+   \makeatother
+
+\newfontfamily{\BureoThreeSeven}{KingsBureauGrot-ThreeSeven}[
+Extension       =   .ttf,
+UprightFont     =   *-Regular,
+ItalicFont      =   *-Italic,
+]  
+
+\newfontfamily{\BureoFiveOne}{KingsBureauGrot-FiveOne}[
+Extension       =   .ttf,
+UprightFont     =   *-Regular,
+ItalicFont      =   *-Italic,
+]
+
+\newfontfamily{\CaslonDisp}{KingsCaslonDisplay}[
+Extension       =   .ttf,
+UprightFont     =   *-Regular,
+ItalicFont      =   *-Italic,
+]
+
+\newfontfamily{\Caslon}{KingsCaslon}[
+Extension       =   .ttf,
+UprightFont     =   *-Regular,
+BoldFont        =   *-Bold,
+ItalicFont      =   *-Italic,
+BoldItalicFont  =   *-BoldItalic
+]
+\setbeamerfont{title page}{family=\BureoThreeSeven}
+\setbeamerfont{footline}{family=\BureoThreeSeven}
+\setbeamerfont{frametitle}{family=\BureoThreeSeven}
+\setbeamerfont{framesubtitle}{family=\BureoThreeSeven}
+\setbeamerfont{block title}{family=\BureoThreeSeven}
+
+\setsansfont{KingsCaslon-Regular.ttf}%
+  [Ligatures=TeX,
+  BoldFont=KingsBureauGrot-ThreeSeven-Regular.ttf,
+  ItalicFont=KingsCaslon-Italic.ttf,
+  BoldItalicFont=KingsCaslon-BoldItalic.ttf]
+
+\RequirePackage{graphicx} % Allows including images
+\RequirePackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+
