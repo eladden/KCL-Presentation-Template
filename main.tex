@@ -48,6 +48,18 @@
 \usepackage[style=verbose,backend=biber]{biblatex}
 \addbibresource{bibliography.bib}
 
+%Add a title slide for each section
+\AtBeginSection[]{
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+    \usebeamerfont{title}\insertsectionhead\par%
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}
+}
+
 
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
